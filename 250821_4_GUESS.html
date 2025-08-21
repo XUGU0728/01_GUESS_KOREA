@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0; list-style: none; text-decoration: none;}
+        body{width: 100vw; overflow-x: hidden;}
+        nav{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 20px;
+        }
+        nav>img{height: 40%;}
+        section{
+            width: 100%;
+            height: calc(100vh - 40px);
+        }
+        .container01{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            overflow: hidden;
+        }
+        .imgBox0101{
+            width: 800%;
+            height: 100%;
+            position: relative;
+        }
+        .slide{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0; top: 0;
+            opacity: 0;
+            transition: all 0.5s linear;
+        }
+        .slide.on{
+            opacity: 1;
+        }
+        .slide > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .prevBtn, .nextBtn{
+            font-size: 40px;
+            color: #555;
+            position: absolute;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .prevBtn{
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .nextBtn{
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .pageIndex{
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            background-color: rgba(0,0,0,0.5);
+            padding: 1px 10px;
+            color: white;
+            border-radius: 15px;
+        }
+
+        .text0102{
+            color: #333;
+            position: absolute;
+            top: 35%;
+            left: 15%;
+        }
+        .text0102 > div:nth-child(1){
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .text0102 > div:nth-child(3){
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .text0102 > div:nth-child(4){
+            width: 70px;
+            height: 1px;
+            background-color: #333;
+            margin-top: 10px;
+        }
+            .text0102 > div{
+                transform: translateY(30px);
+                opacity: 0;
+                transition: all 1s linear;
+                transition-delay: 2s;
+            }
+            .text0102 > div.on{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+        .text0103{
+            color: white;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .text0103 > div:nth-child(1){
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .text0103 > div:nth-child(3){
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .text0103 > div:nth-child(4){
+            width: 70px;
+            height: 1px;
+            background-color: white;
+            margin: 10px auto;
+        }
+            .text0103 > div{
+                transform: translateY(30px);
+                opacity: 0;
+                transition: all 1s linear;
+                transition-delay: 2s;
+            }
+            .text0103 > div.on{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+        .text0104{
+            color: white;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .text0104 > div:nth-child(1){
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .text0104 > div:nth-child(3){
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .text0104 > div:nth-child(4){
+            width: 70px;
+            height: 1px;
+            background-color: white;
+            margin: 10px auto;
+        }
+            .text0104 > div{
+                transform: translateY(30px);
+                opacity: 0;
+                transition: all 1s linear;
+                transition-delay: 2s;
+            }
+            .text0104 > div.on{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+        .text0105{
+            color: white;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .text0105 > div:nth-child(1){
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .text0105 > div:nth-child(3){
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .text0105 > div:nth-child(4){
+            width: 70px;
+            height: 1px;
+            background-color: white;
+            margin: 10px auto;
+        }
+            .text0105 > div{
+                transform: translateY(30px);
+                opacity: 0;
+                transition: all 1s linear;
+                transition-delay: 2s;
+            }
+            .text0105 > div.on{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+        .text0106{
+            color: white;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .text0106 > div:nth-child(1){
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .text0106 > div:nth-child(3){
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .text0106 > div:nth-child(4){
+            width: 70px;
+            height: 1px;
+            background-color: white;
+            margin: 10px auto;
+        }
+            .text0106 > div{
+                transform: translateY(30px);
+                opacity: 0;
+                transition: all 1s linear;
+                transition-delay: 2s;
+            }
+            .text0106 > div.on{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+    </style>
+</head>
+<body><!-- 네비는 존재만 하면 되고 메인 이미지슬라이드 -->
+<!--여기부터 네비------------------------------------------------------>
+<nav>
+    <img src="./image/Guess_logo.svg.png" alt="logo"/>
+</nav>
+<!--여기부터 섹션------------------------------------------------------>
+<section>
+    <div class="container01">
+        <div class="prevBtn">&lt;</div>
+        <div class="nextBtn">&gt;</div>
+        <div class="pageIndex"></div>
+        <div class="imgBox0101">
+            <div class="slide slideImg01 on">
+                <img src="./image/guess01.jpg" alt="main"/>
+            </div>
+            <div class="slide slideImg02">
+                <div class="text0102 text">
+                    <div>DENIM IS OUR WORLD</div>
+                    <div>청량한 인디고 컬러 속 경쾌하게 스며든 NMIXX의 에너지</div>
+                    <div>View More +</div>
+                    <div></div>
+                </div>
+                <img src="./image/guess02.jpg" alt="main"/>
+            </div>
+            <div class="slide slideImg03">
+                <div class="text0103 text">
+                    <div>COOL TOUCH DENIM</div>
+                    <div>더운 날엔 더 가볍게, 게스 쿨 터치 데님을 만나보세요.</div>
+                    <div>View More +</div>
+                    <div></div>
+                </div>
+                <img src="./image/guess03.jpg" alt="main"/>
+            </div>
+            <div class="slide slideImg04">
+                <div class="text0104 text">
+                    <div>ONLINE EXCLUSIVES</div>
+                    <div>뉴 시즌을 특별하게 만들어줄 온라인 단독 컬렉션 Part 2</div>
+                    <div>View More +</div>
+                    <div></div>
+                </div>
+                <img src="./image/guess04.jpg" alt="main"/>
+            </div>
+            <div class="slide slideImg05">
+                <div class="text0105 text">
+                    <div>SPRING NEW COLLECTION</div>
+                    <div>싱그러움이 피어나는 SS 시즌 컬렉션</div>
+                    <div>View More +</div>
+                    <div></div>
+                </div>
+                <img src="./image/guess05.jpg" alt="main"/>
+            </div>
+            <div class="slide slideImg06">
+                <div class="text0106 text">
+                    <div>NEW, NOW, NEXT</div>
+                    <div>GUESS ft.NMIXX SUMMER HANDBAG</div>
+                    <div>View More +</div>
+                    <div></div>
+                </div>
+                <img src="./image/guess06.jpg" alt="main"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(()=>{
+    let slides = document.querySelectorAll('.slide')
+    let index = 0
+    let nextBtn = document.querySelector('.nextBtn')
+    let prevBtn = document.querySelector('.prevBtn')
+
+    let text = [
+        document.querySelectorAll('.text0102 > div'),
+        document.querySelectorAll('.text0103 > div'),
+        document.querySelectorAll('.text0104 > div'),
+        document.querySelectorAll('.text0105 > div'),
+        document.querySelectorAll('.text0106 > div')
+    ]
+    
+    function textAni(){
+        text.forEach((texts, i)=>{
+            texts.forEach((item,j)=>{
+                if(index === i+1){
+                    item.classList.add('on')
+                    item.style.transitionDelay=(j*0.3)+'s'
+                } else {
+                    item.classList.remove('on')
+                    item.style.transitionDelay='0s'
+                }
+            })
+        })
+    }
+
+    function PageIndex() {  
+        let pageIndex=document.querySelector('.pageIndex')
+        let displayIndex = index + 1;
+        if(index === 0) displayIndex = 1;
+        pageIndex.textContent = '0'+displayIndex+' / 0'+(slides.length);
+    }
+
+    function moveImg(){
+        slides.forEach((img)=>{ img.classList.remove('on') })
+        slides[index].classList.add('on')
+        textAni()
+        PageIndex()
+    }
+
+    function next(){
+        index++
+        if(index > slides.length-1){
+            index=0}
+        moveImg()
+    }
+    function prev(){
+        index--
+        if(index < 0){
+            index=slides.length-1}
+        moveImg()
+    }
+
+    moveImg()
+    nextBtn.addEventListener('click', next)
+    prevBtn.addEventListener('click', prev)
+
+})()
+</script>
+
+</body>
+</html>
