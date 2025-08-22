@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GUESS_KOREA</title>
     <style>
         *{margin: 0; padding: 0; list-style: none; text-decoration: none;}
         body{width: 100vw; overflow-x: hidden;}
@@ -305,6 +305,7 @@
 </section>
 
 <script>
+(function(){
     let slides = document.querySelectorAll('.slide')
     let index = 0
     let nextBtn = document.querySelector('.nextBtn')
@@ -377,6 +378,7 @@
 
     showSlide(index)
     startSlide()
+})()
 </script>
 
 </body>
