@@ -305,7 +305,6 @@
 </section>
 
 <script>
-(()=>{
     let slides = document.querySelectorAll('.slide')
     let index = 0
     let nextBtn = document.querySelector('.nextBtn')
@@ -336,34 +335,48 @@
     function PageIndex() {  
         let pageIndex=document.querySelector('.pageIndex')
         let displayIndex = index + 1;
-        pageIndex.textContent = '0'+displayIndex+' / 0'+(slides.length);
+        pageIndex.innerHTML = '0'+displayIndex+' / 0'+(slides.length);
     }
 
-    function moveImg(){
-        slides.forEach((img)=>{ img.classList.remove('on') })
-        slides[index].classList.add('on')
+    function showSlide(i){
+        slides.forEach((e)=>{e.classList.remove('on')})
+        slides[i].classList.add('on')
         textAni()
         PageIndex()
     }
 
-    function next(){
+    let slideInterval = ''
+    let startSlide = ()=>{
+        slideInterval = setInterval(()=>{
+            index++
+            if(index>slides.length-1){index=0}
+            showSlide(index)
+        }, 3000)
+    }
+    
+    let stopSlide = ()=>clearInterval(slideInterval)
+
+    nextBtn.addEventListener('click', ()=>{
         index++
         if(index > slides.length-1){
             index=0}
-        moveImg()
-    }
-    function prev(){
+        showSlide(index)
+    })
+    prevBtn.addEventListener('click', ()=>{
         index--
         if(index < 0){
             index=slides.length-1}
-        moveImg()
-    }
+        showSlide(index)
+    })
 
-    moveImg()
-    nextBtn.addEventListener('click', next)
-    prevBtn.addEventListener('click', prev)
+        prevBtn.addEventListener('mouseenter', stopSlide)
+        prevBtn.addEventListener('mouseleave', startSlide)
+        
+        nextBtn.addEventListener('mouseenter', stopSlide)
+        nextBtn.addEventListener('mouseleave', startSlide)
 
-})()
+    showSlide(index)
+    startSlide()
 </script>
 
 </body>
